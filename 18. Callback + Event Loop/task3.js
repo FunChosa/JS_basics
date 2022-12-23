@@ -1,3 +1,9 @@
+// End
+// Success
+// user received
+// in promise
+// last set timeout
+// promise resolved
 
 const getData = (callback) => {
     fetch('https://jsonplaceholder.typicode.com/users/1')
