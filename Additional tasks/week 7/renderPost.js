@@ -77,18 +77,20 @@ const renderPost = async (id) => {
 
         createPost(requestsResults.title, requestsResults.body);
 
-        
-
         commentsResults.forEach(element => {
             const commentHTML = createComment(element.email, element.body);
             const postComments = document.querySelector('.post__comments');
             postComments.append(commentHTML);
+
      });
+     
     } catch (error) {
         console.log('упс!',error);
+
     } finally {
         toggleLoader();
+
     }
     
 }
-renderPost(5)
+renderPost(8)
