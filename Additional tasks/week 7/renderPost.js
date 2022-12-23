@@ -83,7 +83,7 @@ const renderPost = async (id) => {
             postComments.append(commentHTML);
 
      });
-     
+
     } catch (error) {
         console.log('упс!',error);
 
@@ -93,4 +93,4 @@ const renderPost = async (id) => {
     }
     
 }
-renderPost(8)
+renderPost(6)
