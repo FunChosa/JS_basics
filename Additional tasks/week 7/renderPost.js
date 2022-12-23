@@ -20,7 +20,6 @@ const createPost = (titleOfPost, bodyOfPost) => {
     newPost.append(postText);
     newPost.append(postCommentsText);
     newPost.append(postComments);
-
     return newPost;
 }
 
@@ -55,7 +54,7 @@ const toggleLoader = () => {
     const isHidden = loaderHTML.hasAttribute('hidden');
     if(isHidden){
         loaderHTML.removeAttribute('hidden');
-    }else{
+    } else {
         loaderHTML.setAttribute('hidden', '');
     }
 }
