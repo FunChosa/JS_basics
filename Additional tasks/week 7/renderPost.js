@@ -2,8 +2,7 @@ const TODOS_URL = "https://jsonplaceholder.typicode.com/posts";
 const COMMENTS_URL = "https://jsonplaceholder.typicode.com/comments";
 const dataContainer = document.querySelector('.data-container');
 
-
-const createComment = (comment, titleOfPost, bodyOfPost) => {
+const createPost = (titleOfPost, bodyOfPost) => {
     const newPost = createNewElement('div', 'post');
     newPost.setAttribute('id', 'post');
 
@@ -11,14 +10,9 @@ const createComment = (comment, titleOfPost, bodyOfPost) => {
     const postText = createNewElement('p', 'post__text');
     const postCommentsText = createNewElement('b', 'post__comments-text');
     const postComments = createNewElement('div', 'post__comments');
-    const postComment = createNewElement('div', 'post-comment');
-    const postCommentAuthor = createNewElement('span', 'post-comment__author');
-    const postCommentText = createNewElement('span', 'post-comment__text');
 
     postTitle.textContent = titleOfPost;
     postText.textContent = bodyOfPost;
-    postCommentAuthor.textContent = comment.email;
-    postCommentText.textContent = comment.body;
     postCommentsText.textContent = "Комментарии";
 
     dataContainer.append(newPost);
@@ -26,10 +20,26 @@ const createComment = (comment, titleOfPost, bodyOfPost) => {
     newPost.append(postText);
     newPost.append(postCommentsText);
     newPost.append(postComments);
+
+    return newPost;
+}
+
+
+const createComment = (commentEmail, commentBody) => {
+    const postComments = document.querySelector(".post__comments");
+    
+    const postComment = createNewElement('div', 'post-comment');
+    const postCommentAuthor = createNewElement('span', 'post-comment__author');
+    const postCommentText = createNewElement('span', 'post-comment__text');
+
+    postCommentAuthor.textContent = commentEmail;
+    postCommentText.textContent = commentBody;
+    
     postComments.append(postComment);
     postComment.append(postCommentAuthor);
     postComment.append(postCommentText);
-    return newPost;
+    return(postComment);
+    
 }
 
 
@@ -65,9 +75,14 @@ const renderPost = async (id) => {
         }
         const commentsResults = await comments.json();
 
+        createPost(requestsResults.title, requestsResults.body);
+
+        
+
         commentsResults.forEach(element => {
-            const commentHTML = createComment(element, requestsResults.title, requestsResults.body);
-            dataContainer.append(commentHTML);
+            const commentHTML = createComment(element.email, element.body);
+            const postComments = document.querySelector('.post__comments');
+            postComments.append(commentHTML);
      });
     } catch (error) {
         console.log('упс!',error);
@@ -76,4 +91,4 @@ const renderPost = async (id) => {
     }
     
 }
-renderPost(1)
+renderPost(5)
