@@ -1,4 +1,5 @@
 const PHOTOS_URL = "https://jsonplaceholder.typicode.com/albums";
+const dataContainer = document.querySelector('.data-container');
 
 const createNewAlbum = (album) => {
     const newAlbum = document.createElement('li');
@@ -16,20 +17,18 @@ const toggleLoader = () => {
     }
 }
 
-const dataContainer = document.querySelector('.data-container');
+
 
 const renderAlbums = async () => {
         toggleLoader();
 
         try {
-            const result = await fetch(PHOTOS_URL, {
-                method: 'GET'
-            })
-            if(!result.ok){
-                throw new Error('ошибка в получении данных об альбомах...');
-            }
+            const result = await fetch(PHOTOS_URL);
+            // if(!result.ok){
+            //     throw new Error('ошибка в получении данных об альбомах...');
+            // }
             const responses = await result.json();
-            await responses.forEach((response) => {
+            responses.forEach((response) => {
                 const responseHTML = createNewAlbum(response);
                 dataContainer.append(responseHTML);
             });

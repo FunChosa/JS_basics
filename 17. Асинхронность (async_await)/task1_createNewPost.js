@@ -5,22 +5,17 @@ const createNewPost = async() => {
         isLoading = true;
         const response = await fetch(POSTS_URL, {
             method: "POST"
-        })
-        if(!response.ok){
-            throw new Error('ошибка в получении данных');
-        }
+        });
         const result = await response.json();
         console.log("result", result);
-
     } catch (error) {
         console.log('error!', error);
-
     } finally {
         isLoading = false;
     }
 }
  
-const promise = createNewPost();
+createNewPost();
 
 /*
 const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
