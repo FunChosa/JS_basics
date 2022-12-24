@@ -1,4 +1,5 @@
 const USERS_URL = "https://jsonplaceholder.typicode.com/users";
+const dataContainer = document.querySelector('#data-container');
 
 const createNewUser = (name) => {
     const newUser = document.createElement('li');
@@ -6,6 +7,7 @@ const createNewUser = (name) => {
     newUserLink.href = '#';
     newUserLink.textContent = name;
     newUser.append(newUserLink);
+
     return newUser;
 }
 
@@ -19,18 +21,16 @@ const toggleLoader = () => {
     }
 }
 
-const dataContainer = document.querySelector('#data-container');
-
 
 const getUsersByIds = (ids) => {
-    const requests = ids.map((id) => fetch(`${USERS_URL}/${id}`));
-    Promise.all(requests)
+    toggleLoader();
+    Promise.all(ids.map((id) => fetch(`${USERS_URL}/${id}`)))
         .then((responses) => {
-            const dataResults = responses.map((response)=> response.json());
-            return Promise.all(dataResults);
+            return Promise.all(responses.map((response) => response.json()));
         })
         .then((users) => {
-            users.forEach((user) => {
+            const usersArray = Array.isArray(users) ? users : Object.values(users);
+            usersArray.forEach((user) => {
                 const userHTML = createNewUser (user.name);
                 dataContainer.append(userHTML);
             });
@@ -38,6 +38,9 @@ const getUsersByIds = (ids) => {
         .catch((error) => {
             console.log('упс!',error);
         })
+        .finally(() => {
+            toggleLoader();
+          });
 }
 
 getUsersByIds([5, 6, 2, 1]);
