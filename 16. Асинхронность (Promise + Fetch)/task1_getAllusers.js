@@ -1,4 +1,6 @@
 const USERS_URL = "https://jsonplaceholder.typicode.com/users";
+const dataContainer = document.querySelector('#data-container');
+
 
 const createNewUser = (name) => {
     const newUser = document.createElement('li');
@@ -19,16 +21,14 @@ const toggleLoader = () => {
     }
 }
 
-const dataContainer = document.querySelector('#data-container');
 
 const getAllusers = () => {
     toggleLoader();
-    const result = fetch(USERS_URL,{ 
-        method: 'GET',
-    });
-    console.log('результат', result); //fetch возвращает promise
+    
+    //fetch возвращает promise
     //fetch это специальная функция, которой мы можем передать URL и обработать результат
-    result //так как result это promise мы можем его обрабатывать и декодировать
+    //так как result это promise мы можем его обрабатывать и декодировать
+    fetch(USERS_URL) //method: 'GET' по умолчанию
         .then((response) => {
             if(!response.ok){
                 throw new Error('ой, что-то пошло не так!') //throw выкидывает ошибку и мы перейдем в блок catch
@@ -36,7 +36,8 @@ const getAllusers = () => {
             return response.json(); //декодирование в заданный формат
         })
         .then((users) => {
-            users.forEach((user) => {
+            const usersArray = Array.isArray(users) ? users : Object.values(users);
+            usersArray.forEach((user) => {
                 const userHTML = createNewUser(user.name);
                 dataContainer.append(userHTML);
             });
