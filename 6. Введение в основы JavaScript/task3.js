@@ -1,0 +1,3 @@
+let question1 = confirm('JavaScript появился в 1995 году?') ? alert('Верно') : alert ('JavaScript появился в 1995 году')
+let question2 = confirm('Спецификация JavaScript называется ECMAScript?') ? alert('Верно') : alert ('Спецификация JavaScript называется ECMAScript')
+let question3 = confirm('JavaScript был создан за 1 месяц?') ? alert('Неверно, JavaScript был создан за 10 дней') : alert ('Верно, JavaScript был создан за 10 дней')
