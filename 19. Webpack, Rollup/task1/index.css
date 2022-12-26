@@ -1,0 +1,12 @@
+body{
+    background-color: darkcyan;
+    color: burlywood;
+}
+h1{
+    font-size: 24px;
+    font-style: italic;
+}
+img{
+    width: 200px;
+    height: auto;
+}
