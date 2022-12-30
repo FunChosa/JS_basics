@@ -8,24 +8,25 @@ class Dictionary {
   }
 
   get mainName() { return this.#name; }
-  get allWords () { return this.#words; }
+  get allWords() { return this.#words; }
 
   set mainName(newValue) { this.#name = newValue;}
+  
   _addNewWord(wordKey, wordObj){ //вместо set
-    this.#words = wordKey;
-    this.#words[word] = {
+    let newWord = this.allWords;
+    newWord[wordKey] = {
       word : wordObj.word,
       description : wordObj.description,
       isDifficult : wordObj.isDifficult,
     };
+
   }
 
   add(word, description) {
-    if (!this.#words[word]) {
-      _addNewWord(word, {
+    if (!this.allWords[word]) {
+      this._addNewWord(word, {
         word,
         description,
-        isDifficult,
       })
       };
     }
@@ -40,34 +41,35 @@ class Dictionary {
   }
 }
 
+
 class HardWordsDictionary extends Dictionary {
   add(word, description) {
-    if (!this.words[word]) {
-      this.words[word] = {
+    if (!this.allWords[word]) {
+      this._addNewWord(word, {
         word,
         description,
-        isDifficult: true
+        isDifficult:true,
+      })
       };
     }
-  }
 }
 
-const hardWordsDictionary = new HardWordsDictionary("Сложные слова");
-hardWordsDictionary.add(
-  "дилетант",
-  "Тот, кто занимается наукой или искусством без специальной подготовки, обладая только поверхностными знаниями."
-);
-hardWordsDictionary.add(
-  "неологизм",
-  "Новое слово или выражение, а также новое значение старого слова."
-);
-hardWordsDictionary.add(
-  "квант",
-  "Неделимая часть какой-либо величины в физике."
-);
+const hardWordsDictionary = new HardWordsDictionary('Сложные слова');
+    
+hardWordsDictionary.add('дилетант', 'Тот, кто занимается наукой или искусством без специальной подготовки, обладая только поверхностными знаниями.');
+    
+hardWordsDictionary.add('неологизм', 'Новое слово или выражение, а также новое значение старого слова.');
+    
+hardWordsDictionary.add('квант', 'Неделимая часть какой-либо величины в физике.');
+hardWordsDictionary.add('квант', 'Неделимая часть какой-либо величины в физике.');
 
-hardWordsDictionary.remove("неологизм");
-hardWordsDictionary.showAllWords();
-
-// дилетант - Тот, кто занимается наукой или искусством без специальной подготовки, обладая только поверхностными знаниями.
-// квант - Неделимая часть какой-либо величины в физике.
+    
+// hardWordsDictionary.remove('неологизм');
+    
+// hardWordsDictionary.showAllWords();
+    
+console.log(hardWordsDictionary.mainName); // Сложные слова
+hardWordsDictionary.mainName = 'Новый Словарь';
+console.log(hardWordsDictionary.mainName); // Новый Словарь
+console.log(hardWordsDictionary.allWords); // выводит объект в котором есть слова 
+// дилетант и квант
