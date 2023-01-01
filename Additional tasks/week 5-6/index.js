@@ -5,6 +5,8 @@ function createNewElement(type, className){
 }
 
 class CustomSelect {
+    #currentSelectedOption
+    get selectedValue () { return this.#currentSelectedOption };
 
     constructor (id, options){
 
@@ -29,22 +31,25 @@ class CustomSelect {
 
     render(container){
         container.append(this.dropDownElement);
+
+        const selectButton = document.querySelector('.select-dropdown__button');
+        selectButton.addEventListener("click", () => {
+            const selectUl = document.querySelector('ul');
+            selectUl.classList.toggle('active');
+            selectUl.addEventListener("click", (event) => {
+                const selectLi = event.target.closest('li');
+                selectLi.classList.toggle('selected');
+                if(selectLi){
+                    selectLi.classList.toggle('selected');
+                    const dataValue = selectLi.getAttribute('data-value');
+                    this.#currentSelectedOption = options.find(item => item.value === Number(dataValue))
+                    document.querySelector('.select-dropdown__text').textContent = this.#currentSelectedOption.text;
+                }
+            })
+        })
     }
     
 }
-
-//  <div class="select-dropdown select-dropdown--123">
-//    <button class="select-dropdown__button select-dropdown__button--123"> 
-//       <span class="select-dropdown__text select-dropdown__text--123">Выберите элемент</span>
-//    </button>
-//   <ul class="select-dropdown__list select-dropdown__list--123"> 
-//      <li class="select-dropdown__list-item" data-value="1">JavaScript</li>
-//      <li class="select-dropdown__list-item" data-value="2">NodeJS</li>
-//      <li class="select-dropdown__list-item" data-value="3">ReactJS</li>
-//      <li class="select-dropdown__list-item" data-value="4">HTML</li>
-//      <li class="select-dropdown__list-item" data-value="5">CSS</li> 
-//   </ul> 
-// </div> 
 
 const options = [
     { value: 1, text: 'JavaScript' },
@@ -54,6 +59,6 @@ const options = [
     { value: 5, text: 'CSS' }
 ];
 
-const customSelect = new CustomSelect('999', options);
+const customSelect = new CustomSelect('555', options);
 const mainContainer = document.querySelector('#container'); 
 customSelect.render(mainContainer);
