@@ -5,10 +5,9 @@ function createNewElement(type, className){
 }
 
 class CustomSelect {
-    
+
     constructor (id, options){
 
-        const mainContainer = document.querySelector('#container'); 
         const mainSelectDropDown = createNewElement('div',`select-dropdown select-dropdown--${id}`);
         const buttonSelectDropDown = createNewElement('button', `select-dropdown__button select-dropdown__button--${id}`);
         const spanSelectDropDown  = createNewElement('span', `select-dropdown__text select-dropdown__text--${id}`);
@@ -21,13 +20,16 @@ class CustomSelect {
         });
 
         spanSelectDropDown.textContent = "Выберите элемент";
-        mainContainer.append(mainSelectDropDown);
         mainSelectDropDown.append(buttonSelectDropDown);
         mainSelectDropDown.append(ulSelectDropDown);
         buttonSelectDropDown.append(spanSelectDropDown);
+
+        this.dropDownElement = mainSelectDropDown;
     }
 
-    render(container){}
+    render(container){
+        container.append(this.dropDownElement);
+    }
     
 }
 
@@ -52,6 +54,6 @@ const options = [
     { value: 5, text: 'CSS' }
 ];
 
-const customSelect = new CustomSelect('555', options);
-// const mainContainer = document.querySelector('#container'); 
-// customSelect.render(mainContainer);
+const customSelect = new CustomSelect('999', options);
+const mainContainer = document.querySelector('#container'); 
+customSelect.render(mainContainer);
