@@ -38,9 +38,13 @@ class CustomSelect {
             selectUl.classList.toggle('active');
             selectUl.addEventListener("click", (event) => {
                 const selectLi = event.target.closest('li');
+                const currentElement = document.querySelector('.selected');
+                if(currentElement) {
+                    currentElement.classList.remove('selected');
+                }
                 selectLi.classList.toggle('selected');
                 if(selectLi){
-                    selectLi.classList.toggle('selected');
+                    
                     const dataValue = selectLi.getAttribute('data-value');
                     this.#currentSelectedOption = options.find(item => item.value === Number(dataValue))
                     document.querySelector('.select-dropdown__text').textContent = this.#currentSelectedOption.text;
