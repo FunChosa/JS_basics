@@ -51,6 +51,18 @@ class CustomSelect {
                 }
             })
         })
+
+         // тут дополнительно пыталась реализовать закрытие выпадающего списка по клику на "пустое" место 
+        const documentBody = document.querySelector('body');
+        documentBody.addEventListener("click", (event) => {
+            const { target } = event;
+            if(target.tagName === "BODY"){
+                const currentActive = document.querySelector('.active');
+                if(currentActive){
+                    currentActive.classList.remove('active');
+                }
+            }
+        })
     }
     
 }
