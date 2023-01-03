@@ -6,3 +6,11 @@ export function getRandomColor() {
     }
     return color;
 }
+
+/*
+export function getRandomColor() {
+  const colors =['#ff00bf','#ff004c','#ff0000','#ff9100','#33ff00'];
+  const index = Math.floor(Math.random() * colors.length);
+  return colors[index];
+}
+*/
