@@ -4,7 +4,7 @@ import './index.css';
 
 const cookieConsent = document.querySelector(".cookie-consent");
 
-if (localStorage.getItem("cookieButtonResult") === "true"){
+if (localStorage.getItem("cookieButtonResult")){ //==="true"
     cookieConsent.classList.add('hide');
 
 } else {
