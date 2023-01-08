@@ -13,7 +13,6 @@ export class addNewDonat {
     }
 
     render() {
-        
         this.#donatDate.className = 'donate-item';
         this.#donatDate.textContent = `${getTodayDateFormat(new Date())} - `;
 
