@@ -1,21 +1,20 @@
 import './index.css';
 import { addNewDonat } from "./src/app";
-
+import * as settings from "./constants/settings"
 
 const donatButton = document.querySelector('.donate-form__submit-button');
 
 donatButton.addEventListener('click', (event) =>  {
     event.preventDefault();
     
-    const donat = document.querySelector('.donate-form__donate-input');
-    const totalAmount = document.querySelector('#total-amount');
-    const totalAmountModified = Number((totalAmount.textContent).replace('$',''));
-    const donatesContainerDonates = document.querySelector('.donates-container__donates');
+    
+    
+    const totalAmountModified = Number((settings.totalAmount.textContent).replace('$',''));
 
-    totalAmount.textContent = (`${totalAmountModified + Number(donat.value)}$`);
+    settings.totalAmount.textContent = (`${totalAmountModified + Number(settings.donat.value)}$`);
 
-    const newDonat = new addNewDonat(donat.value);
-    donatesContainerDonates.prepend(newDonat.render());
-    donat.value = "";
+    const newDonat = new addNewDonat(settings.donat.value);
+    settings.donatesContainerDonates.prepend(newDonat.render());
+    settings.donat.value = "";
 
 })
