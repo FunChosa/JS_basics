@@ -1,6 +1,6 @@
 import { getTodayDateFormat } from "./date";
 
-export class addNewDonat {
+export default class addNewDonat {
     
     #pay
     #donatDate
