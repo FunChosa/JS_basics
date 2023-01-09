@@ -2,9 +2,9 @@ import './index.css';
 import { addNewDonat } from "./src/app";
 import * as settings from "./constants/settings"
 
-const donatButton = document.querySelector('.donate-form__submit-button');
 
-donatButton.addEventListener('click', (event) =>  {
+
+settings.donatButton.addEventListener('click', (event) =>  {
     event.preventDefault();
     const totalAmountModified = Number((settings.totalAmount.textContent).replace('$',''));
 
