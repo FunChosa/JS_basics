@@ -6,4 +6,9 @@
 # git config //много настроек, сейчас нам нужны только user.name и user.email
 # git congig user.email "новый имейл"
 # git status //отслеживание изменений
-# git add //подготовить файлы к записи в гит
+# git add //подготовить файлы к записи в гит добавляя в stage - специальную область
+# git add [files] 
+# git commit -m "комментарий"
+# git log //просмотреть логи подробно
+# git log --oneline //посмотреть логи кратко
+# git push [rep_link] [branch_name]
