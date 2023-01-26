@@ -36,7 +36,7 @@ Nazgul123!
     findOneAndDelete  
     findOneAndReplace  
     findOneAndUpdate**
-* **db.users.updateOne(
+* db.users.updateOne(
     {name: "Sailor Mars"},
     {
         $set:{
@@ -44,7 +44,8 @@ Nazgul123!
             height: 170
         }
     }
-)** - найти и заменить параметр
+)
+- найти и заменить параметр
 * **db.users.updateMany(  
     {},  
     {  
@@ -91,7 +92,6 @@ Nazgul123!
     }
 ) - поиск пользака с конкретным постом
 * db.users.find({posts: {$exists: true}}) - выводит пользователей которые обладают каким-то конкетным полем
-
 ## Import mongo
 ### как связать СУБД с Node.js?
 1. логинимся в mongo db сайт
@@ -100,8 +100,7 @@ Nazgul123!
 4. Vs code -> index.js
 npm init -y
 npm i mongodb
-5. 
-const {MingoClient} = require('mongodb);  
+5. const {MingoClient} = require('mongodb);  
 const client = new MingoClient('[URL]');  
 cons start = async () => {  
     try{
@@ -119,7 +118,6 @@ start()
     const client = new MingoClient('[URL]');
     в самой ссылке пишем свой пароль и название бд (название проекта из п2)
 8. теперь можно работать с ним
-
 const {MingoClient} = require('mongodb);  
 const client = new MingoClient('[URL]');  
 cons start = async () => {  
