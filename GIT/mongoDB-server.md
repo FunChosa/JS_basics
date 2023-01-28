@@ -60,7 +60,7 @@ Nazgul123!
             name: "fullname",  
         }  
     }) - найти и заменить название параметра  
-* **db.users.deleteOne({height: 130})** - удаление
+* **db.users.deleteOne({height: 130})** - удаление записи 
 * **
     db.users.bulkWrite([    
     {  
