@@ -1,5 +1,6 @@
 # HOW TO CONNECT TO SERVER WITH MONGO.
-1. run dev cloud vpn; (password from computer)
+1. run dev cloud vpn;   
+(password from computer)
 2. run Remote Desctop Connection;  
 Gulnaz  
 Nazgul123!
@@ -8,7 +9,7 @@ Nazgul123!
 # MONGO
 * **show datbase** - список имеющихся баз данных;
 * **show collections** - посмотреть список имеющихся коллекций;
-* **use [name]** - перейти (или перейти и создать) в бд;
+* **use [name]** - перейти (или перейти и создать) в базу данных;
 * **db.createCollection("[name]")** - создать коллекцию внутри бд;
 * **db.dropDatabase()** - удалить бд;
 * **
@@ -23,9 +24,11 @@ Nazgul123!
         {name: "Sailor Mars", height: 160},  
     ]) 
 * **db.[collection_name].find()** - поиск всех записей
-* **db.[collection_name].find({attribute: value})** - поиск по критерию
-(например db.users.find({height: 157}))
-(например db.users.find({name: "Sailor Mercury", height: 157}))
+* **db.[collection_name].find({attribute: value})** - поиск по критерию  
+* **
+    например:
+    db.users.find({height: 157})  
+    db.users.find({name: "Sailor Mercury", height: 157})  
 * **db.users.find({$or:[{name: "Sailor Mars"}, {height: 157}]})** - ИЛИ
 * **db.users.find({height: {$lt: 155}})** - поиск по условию
     **( $lt / $lte / $gt / $ghe / $ne )**
@@ -33,7 +36,9 @@ Nazgul123!
 * **db.users.find().limit(4)**
 * **db.users.findOne({_id: ObjectId("63d0e53e1b5b1ba7f278a6e5")})** - поиск одной записи, например по id
 * **db.users.distinct** - вернет только уникальные записи
-*   **find  
+* **    
+    Варианты поиска:
+    find  
     findOne   
     findOneAndDelete  
     findOneAndReplace  
