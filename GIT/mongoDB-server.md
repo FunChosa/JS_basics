@@ -15,13 +15,13 @@
 * **db.createCollection("[name]")** - создать коллекцию внутри бд;
 * **db.dropDatabase()** - удалить бд;
 
-```
+```json
     db.[collection_name].insert({  
         name: "Nazgul",  
         age: 25  
     }) 
 ```
-```
+```json
     db.[collection_name].insertMany([   
         {name: "Sailor Moon", height: 150},  
         {name: "Sailor Mercury", height: 157},  
@@ -30,7 +30,7 @@
 ```
 * **db.[collection_name].find()** - поиск всех записей
 * **db.[collection_name].find({attribute: value})** - поиск по критерию  
-```
+```json
     например:
     db.users.find({height: 157})  
     db.users.find({name: "Sailor Mercury", height: 157}) 
@@ -50,7 +50,7 @@
     findOneAndReplace  
     findOneAndUpdate
 ```
-```
+```json
     Найти и заменить параметр:
 
     db.users.updateOne({
@@ -62,7 +62,7 @@
         }
     }) 
 ```
-```
+```json
     Найти и заменить название параметра:
 
     db.users.updateMany(  
@@ -74,7 +74,7 @@
     })  
 ```
 * **db.users.deleteOne({height: 130})** - удаление записи 
-```
+```json
     Добавление одного пользователя и удаление другого:
 
     db.users.bulkWrite([    
@@ -90,7 +90,7 @@
     }  
     ]) 
 ```
-```
+```json
     Добавление постов:
 
     db.users.update(
@@ -104,15 +104,15 @@
         }
     })
 ```
-```
+```json
     Поиск постов:
 
     db.users.findOne(
         {fullname: "Sailor Mars"},
-        {posts:1}
+        {posts: 1}
     )
 ```
-```
+```json
     db.users.find(
         {
             posts: {
@@ -136,7 +136,7 @@
     * npm init -y
     * npm i mongodb
 ```
-```
+```json
 5.  const {MingoClient} = require('mongodb);  
     const client = new MingoClient('[URL]');  
     cons start = async () => {  
@@ -149,7 +149,7 @@
     start()
 ```
 
-```
+```json
 6.  возвращаемся в браузер, где приготовился кластер  
     делаем: 
         Add a connection IP Address
@@ -157,13 +157,14 @@
         => Choose connection method => Connect your application 
         (Connect to Cluster) => скопировать [URL]
 ```
-```
+```json
 7.  добавляем URL    
     const client = new MingoClient('[URL]');
     в самой ссылке пишем свой пароль и название бд (название проекта из п2)
 ```
-```
+```json
 8. теперь можно работать с ним
+
     const {MingoClient} = require('mongodb);  
     const client = new MingoClient('[URL]');  
     cons start = async () => {  
